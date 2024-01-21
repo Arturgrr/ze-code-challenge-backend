@@ -7,8 +7,7 @@ export interface CoverageAreaProps {
 }
 
 export class CoverageArea extends Entity<CoverageAreaProps> {
-
-  get coordinates(){
+  get coordinates() {
     return this.props.coordinates
   }
 

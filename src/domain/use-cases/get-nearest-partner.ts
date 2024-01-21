@@ -13,10 +13,13 @@ type GetNearestPartnerUseCaseUseCaseResponse = Either<
 export class GetNearestPartnerUseCase {
   constructor(private partnersRepository: PartnerRepository) {}
 
-  async execute(userLocation: Address): Promise<GetNearestPartnerUseCaseUseCaseResponse> {
-    const nearestPartner = await this.partnersRepository.findNearestPartner(userLocation)
-    if(!nearestPartner) {
-      return left(null) //TODO: Create a better error module
+  async execute(
+    userLocation: Address,
+  ): Promise<GetNearestPartnerUseCaseUseCaseResponse> {
+    const nearestPartner =
+      await this.partnersRepository.findNearestPartner(userLocation)
+    if (!nearestPartner) {
+      return left(null) // TODO: Create a better error module
     }
     return right({ partner: nearestPartner })
   }

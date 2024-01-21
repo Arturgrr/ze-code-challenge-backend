@@ -7,8 +7,7 @@ export interface AddressProps {
 }
 
 export class Address extends Entity<AddressProps> {
-
-  get coordinates(){
+  get coordinates() {
     return this.props.coordinates
   }
 

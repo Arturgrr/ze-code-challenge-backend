@@ -1,4 +1,4 @@
-import { Address } from '../entities/address';
+import { Address } from '../entities/address'
 import { Partner } from '../entities/partner'
 
 export abstract class PartnerRepository {

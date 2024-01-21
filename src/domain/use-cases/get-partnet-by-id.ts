@@ -16,10 +16,12 @@ type GetPartnerByIdUseCaseUseCaseResponse = Either<
 export class GetPartnerByIdUseCase {
   constructor(private partnersRepository: PartnerRepository) {}
 
-  async execute({id}: GetPartnerByIdUseCaseUseCaseRequest): Promise<GetPartnerByIdUseCaseUseCaseResponse> {
+  async execute({
+    id,
+  }: GetPartnerByIdUseCaseUseCaseRequest): Promise<GetPartnerByIdUseCaseUseCaseResponse> {
     const partnerById = await this.partnersRepository.findById(id)
-    if(!partnerById) {
-      return left(null) //TODO: Create a better error module
+    if (!partnerById) {
+      return left(null) // TODO: Create a better error module
     }
     return right({ partner: partnerById })
   }

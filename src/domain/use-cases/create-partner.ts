@@ -37,9 +37,11 @@ export class CretePartnerUseCase {
       coverageArea,
     })
 
-    const partnerWithSameEmail = await this.partnersRepository.findByDocument(partner.document)
-    if(partnerWithSameEmail) {
-      return left(null) //TODO: Create a better error module
+    const partnerWithSameEmail = await this.partnersRepository.findByDocument(
+      partner.document,
+    )
+    if (partnerWithSameEmail) {
+      return left(null) // TODO: Create a better error module
     }
 
     await this.partnersRepository.create(partner)
