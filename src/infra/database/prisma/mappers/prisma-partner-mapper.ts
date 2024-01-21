@@ -15,4 +15,14 @@ export class PrismaPartnerMapper {
 
     return Partner.create(partnerProps)
   }
+
+  static toPrisma(partner: Partner) {
+    return {
+      tradingName: partner.tradingName,
+      ownerName: partner.ownerName,
+      document: partner.document,
+      coverageArea: partner.coverageArea,
+      address: partner.address,
+    }
+  }
 }

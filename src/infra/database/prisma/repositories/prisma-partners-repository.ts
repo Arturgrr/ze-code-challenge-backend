@@ -1,18 +1,32 @@
-import { Address } from '@/domain/entities/address'
 import { Partner } from '@/domain/entities/partner'
 import { PartnerRepository } from '@/domain/repositories/partners-repository'
 import { PrismaService } from '../prisma.service'
 import { Injectable } from '@nestjs/common'
+import { PrismaPartnerMapper } from '../mappers/prisma-partner-mapper'
 
 @Injectable()
 export class PrismaPartnersRepository implements PartnerRepository {
   constructor(private prisma: PrismaService) {}
 
-  create(partner: Partner): Promise<void> {}
+  async create(partner: Partner): Promise<void> {
+    const data = PrismaPartnerMapper.toPrisma(partner)
 
-  findByDocument(document: string): Promise<Partner | null> {}
+    await this.prisma.user.create({
+      data: {
+        ...data,
+        coverageArea: {
+          create: data.coverageArea as CoverageAreaCreateInput,
+        },
+        address: {
+          create: data.address as CoverageAreaCreateInput,
+        },
+      },
+    })
+  }
 
-  findById(id: string): Promise<Partner | null> {}
+  async findByDocument(document: string): Promise<Partner | null> {}
 
-  findNearestPartner(userLocation: Address): Promise<Partner | null> {}
+  async findById(id: string): Promise<Partner | null> {}
+
+  async findNearestPartner(userLocation: Address): Promise<Partner | null> {}
 }

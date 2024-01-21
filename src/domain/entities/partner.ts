@@ -24,6 +24,14 @@ export class Partner extends Entity<PartnerProps> {
     return this.props.coverageArea
   }
 
+  get tradingName() {
+    return this.props.tradingName
+  }
+
+  get ownerName() {
+    return this.props.ownerName
+  }
+
   static create(props: PartnerProps, id?: UniqueEntityId) {
     const partner = new Partner(props, id)
 
