@@ -12,6 +12,10 @@ export interface PartnerProps {
 }
 
 export class Partner extends Entity<PartnerProps> {
+  get document() {
+    return this.props.document
+  }
+
   static create(props: PartnerProps, id?: UniqueEntityId) {
     const partner = new Partner(props, id)
 
