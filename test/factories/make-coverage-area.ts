@@ -10,7 +10,6 @@ export function makeCoverageArea(
     type: 'MultiPolygon', 
     coordinates: [
       [[faker.number.float(), faker.number.float()], [faker.number.float(), faker.number.float()]],
-      [[faker.number.float(), faker.number.float()], [faker.number.float(), faker.number.float()]]
     ],    
     ...override
   }, id
