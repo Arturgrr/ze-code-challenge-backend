@@ -3,7 +3,7 @@ import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 
 export interface CoverageAreaProps {
   type: string
-  area: Array<Array<Array<Array<[number, number]>>>> // TODO: Learn More about GeoJSON MultiPolygon
+  coordinates: number[][][]
 }
 
 export class CoverageArea extends Entity<CoverageAreaProps> {

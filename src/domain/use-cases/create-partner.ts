@@ -1,4 +1,4 @@
-import { Either, right } from '@/core/either'
+import { Either, left, right } from '@/core/either'
 import { Address } from '../entities/address'
 import { CoverageArea } from '../entities/coverage-area'
 import { Partner } from '../entities/partner'
@@ -36,6 +36,13 @@ export class CretePartnerUseCase {
       address,
       coverageArea,
     })
+
+    const partnerWithSameEmail = await this.partnersRepository.findByDocument(partner.document)
+    if(partnerWithSameEmail) {
+      return left(null) //TODO: Create a better error module
+    }
+
+    await this.partnersRepository.create(partner)
 
     return right({ partner })
   }
