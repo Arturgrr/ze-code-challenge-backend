@@ -19,8 +19,8 @@ export class InMemoryPartnersRepository implements PartnerRepository {
     return partner
   }
 
-  async findById(id: UniqueEntityId): Promise<Partner | null> {
-    const partner = this.itens.find((item) => item.id === id)
+  async findById(id: string): Promise<Partner | null> {
+    const partner = this.itens.find((item) => item.id.equals(new UniqueEntityId(id)))
 
     if (!partner) {
       return null

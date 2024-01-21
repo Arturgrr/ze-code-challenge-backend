@@ -8,7 +8,7 @@ let imMemoryPartnerRepository: InMemoryPartnersRepository;
 
 let sut: CretePartnerUseCase;
 
-describe('Create Partner Use Case', () => {
+describe('Create partner use-case', () => {
   beforeEach(() => {
     imMemoryPartnerRepository = new InMemoryPartnersRepository();
     sut = new CretePartnerUseCase(imMemoryPartnerRepository);
