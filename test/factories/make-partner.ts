@@ -1,8 +1,8 @@
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
-import { Address } from "@/domain/entities/address";
-import { CoverageArea } from "@/domain/entities/coverage-area";
 import { Partner, PartnerProps } from "@/domain/entities/partner";
-import { fa, faker } from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
+import { makeCoverageArea } from "./make-coverage-area";
+import { makeAddress } from "./make-address";
 
 export function makePartner(
   override: Partial<PartnerProps> = {},
@@ -12,11 +12,8 @@ export function makePartner(
     tradingName: faker.company.name(),
     ownerName: faker.person.fullName(),
     document: faker.string.uuid(),
-    address: Address.create({type: 'Point', coordinates: [faker.number.float(), faker.number.float()]}),
-    coverageArea: CoverageArea.create({type: 'MultiPolygon', coordinates: [
-      [[faker.number.float(), faker.number.float()], [faker.number.float(), faker.number.float()]],
-      [[faker.number.float(), faker.number.float()], [faker.number.float(), faker.number.float()]]
-    ]}),
+    address: makeAddress(),
+    coverageArea: makeCoverageArea(),
     ...override
   }, id
   )

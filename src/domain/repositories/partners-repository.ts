@@ -1,4 +1,3 @@
-import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { Partner } from '../entities/partner'
 
 export abstract class PartnerRepository {
